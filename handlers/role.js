@@ -15,7 +15,7 @@ var Role = require('../models/roles'),
         });
       }
     },
-    //  Get all roles from the datase
+    //  Get all roles from the database
     getAllRoles: function(limit,res) {
       Role.find({}, function(err, roles) {
         if (err) {
