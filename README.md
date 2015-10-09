@@ -17,10 +17,12 @@ Cool, now that we have installed our major tools we can now start running this s
 great, now lets run ` npm install ` this will install all the dependecies that the system will need to run perfectly.
 ```
     $ npm install
+    
+    $ npm link
 ```
 
 # Commands
-The following are the  commands you will need to navigate through our system, in your terminal navigate to the system folder and run `./index.js <commands>`
+The following are the  commands you will need to navigate through our system, in your terminal navigate to the system folder and run `manager <command>`
 
 1. `cru` Create new user
 2. `gau <limit>` Get all user, followed the limit of the users you want to find, if you want all users, ignore the limit
