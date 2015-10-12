@@ -3,9 +3,9 @@ var User = require('../models/user'),
   bcrypt = require('bcrypt-nodejs'),
   userHandler = {
 
-    createUser: function(req, res) {
+    createUser: function(req, cb) {
       if (req === undefined) {
-        res('please provide  user data');
+        cb('please provide  user data');
       }
       // Hash the password before we store it into the database
       var hash = bcrypt.hashSync(req.password);
@@ -20,18 +20,18 @@ var User = require('../models/user'),
         password: hash
       }, function(err, users) {
         if (err)
-          res(err, null);
-        res(null, users);
+          cb(err, null);
+        cb(null, users);
       });
     },
 
     // Gets all users
-    getAllUsers: function(limit, res) {
+    getAllUsers: function(limit, cb) {
       User.find({}, function(err, users) {
         if (err) {
-          res(err);
+          cb(err);
         }
-        res(users);
+        cb(users);
       }).limit(limit);
     },
   };

@@ -5,9 +5,9 @@ var Doc = require('../models/document'),
   docHandler = {
 
     // Create a new document
-    createDocument: function(req, res) {
+    createDocument: function(req, cb) {
       if (req === undefined) {
-        return res({
+        return cb({
           isCreated: false,
           message: 'please provide  user data'
         });
@@ -20,49 +20,49 @@ var Doc = require('../models/document'),
           dateCreated: new Date(req.date)
         }, function(err, doc) {
           if (err)
-            res(err, null);
+            cb(err, null);
           if (!doc)
-            res('Document not created');
+            cb('Document not created');
           else
-            res(null, doc);
+            cb(null, doc);
         });
       }
     },
 
     //  Get all the documents with a limit is specified
-    getAllDocuments: function(limit, res) {
+    getAllDocuments: function(limit, cb) {
       Doc.find({}, null, {
         sort: '-dateCreated'
       }, function(err, docs) {
         if (err) {
-          res(err);
+          cb(err);
         } else {
-          res(docs);
+          cb(docs);
         }
       });
     },
 
     // Gets all documents by date
-    getAllDocumentsByDate: function(date, limit, res) {
+    getAllDocumentsByDate: function(date, limit, cb) {
       Doc.find({
         dateCreated: new Date(date)
       }, function(err, docs) {
         if (err) {
-          res(err);
+          cb(err);
         }
-        res(docs);
+        cb(docs);
       });
     },
 
     // Get all documents by role
-    getAllDocumentsByRole: function(role, limit, res) {
+    getAllDocumentsByRole: function(role, limit, cb) {
       Doc.find({
         access: role
       }, function(err, docs) {
         if (err) {
-          res(err);
+          cb(err);
         } else {
-          res(docs);
+          cb(docs);
         }
       });
     }

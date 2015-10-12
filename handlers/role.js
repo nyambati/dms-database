@@ -1,27 +1,27 @@
 var Role = require('../models/roles'),
   roleHandler = {
     // create roles
-    createRole: function(req, res) {
+    createRole: function(req, cb) {
       if (req === undefined) {
-        res("Please provide data");
+        cb("Please provide data");
       } else {
         Role.create({
           title: req.title,
         }, function(err, role) {
           if (err)
-            res(err, null);
+            cb(err, null);
           else
-            res(null, role);
+            cb(null, role);
         });
       }
     },
     //  Get all roles from the database
-    getAllRoles: function(limit,res) {
+    getAllRoles: function(limit,cb) {
       Role.find({}, function(err, roles) {
         if (err) {
-          res(err, null);
+          cb(err, null);
         }
-        res(null, roles);
+        cb(null, roles);
       }).limit(limit);
     }
   };
