@@ -45,9 +45,8 @@
      // Read documents
      documents = json.read('./data/documents.json');
      // Insert documents into the db
-     for(var key in documents.data) {
-      var doc = documents.data[key];
-      Doc.create({
+     documents.data.forEach(function(doc) {
+       Doc.create({
         ownerId: doc.ownerId,
         title: doc.title,
         content: doc.content,
@@ -63,9 +62,6 @@
          console.log('Documents have been inserted');
        }
      });
-
-     }
-
+     });
    }
  };
-
