@@ -1,0 +1,16 @@
+[{
+  "_id": "5620dba52472ace206476063",
+  "title": "admin",
+  "createdAt": "2015-10-16T11:12:37.988Z",
+  "__v": 0
+}, {
+  "_id": "5620dbae735ddbee06d3c6b1",
+  "title": "user",
+  "createdAt": "2015-10-16T11:12:46.434Z",
+  "__v": 0
+}, {
+  "_id": "5620dbb9ae941dfb065f8e27",
+  "title": "public",
+  "createdAt": "2015-10-16T11:12:57.145Z",
+  "__v": 0
+}]

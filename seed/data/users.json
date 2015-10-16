@@ -1,0 +1,31 @@
+[{
+  "username": "thomasnyambati",
+  "role": "admin",
+  "name": {
+    "last": "Nyambati",
+    "first": "Thomas"
+  },
+  "email": "thomasnyammbati@mango.com",
+  "password": "$2a$10$eEvcRvPUT7iY/AQThOGE5.l1IABbl6/juGXP7wK8dcMzr7HOcMoqi",
+  "__v": 0
+}, {
+  "username": "alexmeangi",
+  "role": "admin",
+  "name": {
+    "last": "Mwangi",
+    "first": "Alex"
+  },
+  "email": "alexmwangi@mango.com",
+  "password": "$2a$10$nZsEArlDi7aRLz7f.sZCZ.2KBeMiKgvf1OUZoZJtXG9uFPNV0.Nv2",
+  "__v": 0
+}, {
+  "username": "bensol",
+  "role": "User",
+  "name": {
+    "last": "Solivia",
+    "first": "Ben"
+  },
+  "email": "bensol@mango.com",
+  "password": "$2a$10$fv0BmVLvfdHvJ0J9wCW4f.6AoTcUPKSuK0tB6idHityzwAa7cKXnG",
+  "__v": 0
+}]
