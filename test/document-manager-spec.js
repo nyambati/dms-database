@@ -87,7 +87,6 @@ mongoose.connect(db);
       });
 
       it('should return documents of specified limit', function() {
-        limit = 2;
         expect(docs.length).toBe(2);
       });
 
@@ -101,11 +100,11 @@ mongoose.connect(db);
 
     });
 
-    // ROLE TEST SUITE
-    describe('Roles', function() {
+    // SEARCH TEST SUITE
+    describe('Search', function() {
       describe('Get documents by  date', function() {
         beforeEach(function(done) {
-          docHandler.getAllDocumentsByDate('2015-10-6', 2, function(allDocs) {
+          docHandler.getAllDocumentsByDate('2015-10-06', 2, function(allDocs) {
             docs = allDocs;
             done();
           });
@@ -116,7 +115,7 @@ mongoose.connect(db);
         });
       });
 
-      describe('Get documents by  date', function() {
+      describe('Get documents by  role', function() {
         beforeEach(function(done) {
           docHandler.getAllDocumentsByRole('public', 2, function(allDocs) {
             docs = allDocs;

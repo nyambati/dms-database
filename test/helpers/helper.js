@@ -1,10 +1,8 @@
-var userHelper;
-
 (function() {
 
   'use strict';
 
-  userHelper = {
+  module.exports = {
     isUnique: {
       email: function(users) {
         var email = [];
@@ -213,5 +211,3 @@ var userHelper;
 
   };
 })();
-
-module.exports = userHelper;

@@ -2,11 +2,20 @@
   "name": "mongo-database",
   "version": "1.0.0",
   "description": "Document management system database in mongodb",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Andela-thomas/Dms-ODM-database.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Andela-thomas/Dms-ODM-database/issues"
+  },
+  "homepage": "https://github.com/Andela-thomas/Dms-ODM-database#readme",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "test": "./node_modules/.bin/jasmine-node test --autotest"
+    "test": "jasmine-node test --autotest --color"
   },
   "preferGlobal": true,
   "bin": {
@@ -19,6 +28,7 @@
     "cli-table": "^0.3.1",
     "inquirer": "^0.10.1",
     "jasmine-node": "^1.14.5",
+    "json-file": "^0.1.0",
     "moment": "^2.10.6",
     "mongoose": "^4.1.9"
   }

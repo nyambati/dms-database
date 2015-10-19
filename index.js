@@ -10,6 +10,7 @@ var mongoose = require('mongoose'),
   userPrompt = require('./prompts/create-user'),
   documentPropmt = require('./prompts/create-document'),
   rolePrompt = require('./prompts/create-role'),
+  seed = require('./seed'),
   args = process.argv.slice(2),
   command = args[0];
 
@@ -18,11 +19,28 @@ var userHandler = require('./handlers/user'),
   docHandler = require('./handlers/document'),
   roleHandler = require('./handlers/role');
 
-mongoose.connect(db);
+var conn = mongoose.connect(db, function(err, conn) {
+
+});
 
 switch (command) {
   // User commands
-  //  creates users
+
+  case 'init':
+    if (conn) {
+      seed.user();
+      seed.roles();
+      seed.documents();
+    } else {
+      console.log('NO DATABASE CONNECTION');
+    }
+
+    setTimeout(function() {
+      process.exit();
+    }, 500);
+
+    break;
+    //  creates users
   case 'cru':
     inquirer.prompt(userPrompt, function(responses) {
       //  check if the user cancelled the input
@@ -128,7 +146,7 @@ switch (command) {
 
   case 'gar':
     // query the database and get all roles
-    roleHandler.getAllRoles(args[1], function(roles) {
+    roleHandler.getAllRoles(args[1], function(err, roles) {
       if (!roles) {
         console.log('===========================================================================');
         console.log("DATA RETRIVAL FAILED, ENSURE YOU PASS IN THE RIGHT COMMANDS");

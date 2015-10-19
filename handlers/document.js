@@ -39,7 +39,7 @@ var Doc = require('../models/document'),
         } else {
           cb(docs);
         }
-      });
+      }).limit(limit);
     },
 
     // Gets all documents by date
@@ -51,7 +51,7 @@ var Doc = require('../models/document'),
           cb(err);
         }
         cb(docs);
-      });
+      }).limit();
     },
 
     // Get all documents by role
