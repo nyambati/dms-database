@@ -1,17 +1,14 @@
- var json = require('json-file'),
+ var users = require('./data/users.json'),
+   roles = require('./data/roles.json'),
+   documents = require('./data/documents.json'),
    Doc = require('../models/document'),
    User = require('../models/user'),
    Role = require('../models/roles');
 
  module.exports = {
    user: function() {
-     var users;
-
-     // Read users
-     users = json.read('./seed/data/users.json');
-
      // Insert users into the db
-     User.collection.insert(users.data, function(err, users) {
+     User.collection.insert(users, function(err, users) {
        if (err) {
          console.log('======================================');
          console.log(err.message.substring(7, 26).toUpperCase() + ': Users Already created');
@@ -23,12 +20,8 @@
    },
 
    roles: function() {
-     var roles;
-
-     // Read roles
-     roles = json.read('./seed/data/roles.json');
      // Insert role into the db
-     Role.collection.insert(roles.data, function(err, roles) {
+     Role.collection.insert(roles, function(err, roles) {
        if (err) {
          console.log('======================================');
          console.log(err.message.substring(7, 26).toUpperCase() + ': Roles Already created');
@@ -40,28 +33,24 @@
    },
 
    documents: function() {
-     var documents;
-
-     // Read documents
-     documents = json.read('./seed/data/documents.json');
      // Insert documents into the db
-     documents.data.forEach(function(doc) {
+     documents.forEach(function(doc) {
        Doc.create({
-        ownerId: doc.ownerId,
-        title: doc.title,
-        content: doc.content,
-        access: doc.access,
-        dateCreated: doc.dateCreated
-      },
-      function(err, documents) {
-       if (err) {
-         console.log('======================================');
-         console.log(err.message.substring(7, 26).toUpperCase() + ': Documents Already created');
-       } else {
-         console.log('======================================');
-         console.log('Documents have been inserted');
-       }
-     });
+           ownerId: doc.ownerId,
+           title: doc.title,
+           content: doc.content,
+           access: doc.access,
+           dateCreated: doc.dateCreated
+         },
+         function(err, documents) {
+           if (err) {
+             console.log('======================================');
+             console.log(err.message.substring(7, 26).toUpperCase() + ': Documents Already created');
+           } else {
+             console.log('======================================');
+             console.log('Documents have been inserted');
+           }
+         });
      });
    }
  };
