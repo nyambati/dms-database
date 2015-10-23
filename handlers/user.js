@@ -34,6 +34,17 @@ var User = require('../models/user'),
         cb(users);
       }).limit(limit);
     },
+
+    deleteUser: function(id, cb) {
+      User.remove({
+        _id: id
+      }, function(err, ok) {
+        if (err) {
+          cd(err);
+        }
+        cb(null, ok);
+      });
+    },
   };
 
 module.exports = userHandler;

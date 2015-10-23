@@ -65,7 +65,18 @@ var Doc = require('../models/document'),
           cb(docs);
         }
       });
-    }
+    },
+
+    deleteDocument: function(id, cb) {
+      Doc.remove({
+        _id: id
+      }, function(err, ok) {
+        if (err) {
+          cb(err);
+        }
+        cb(null, ok);
+      });
+    },
   };
 
 module.exports = docHandler;

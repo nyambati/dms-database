@@ -15,7 +15,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "jasmine-node test --autotest --color"
+    "test": "jasmine-node test"
   },
   "preferGlobal": true,
   "bin": {
@@ -26,6 +26,7 @@
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "cli-table": "^0.3.1",
+    "faker": "^3.0.1",
     "inquirer": "^0.10.1",
     "jasmine-node": "^1.14.5",
     "json-file": "^0.1.0",
