@@ -41,6 +41,7 @@ mongoose.connect(db);
         });
 
         it('the new user should have id, username, role, names and password ', function() {
+          if(newUser._id) {
           expect(newUser.username).toBeDefined();
           expect(newUser.username).toBe(fakeUser.username);
           expect(newUser.role).toBeDefined();
@@ -51,6 +52,9 @@ mongoose.connect(db);
           expect(newUser._id).toBeDefined();
           expect(newUser.password).toBeDefined();
           expect(typeof newUser.password).toBe('string');
+        } else {
+          expect(err).toBeDefined();
+        }
         });
 
         beforeEach(function(done) {
@@ -210,3 +214,5 @@ mongoose.connect(db);
     });
   });
 })();
+
+process.exit();
