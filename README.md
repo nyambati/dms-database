@@ -19,8 +19,10 @@ great, now lets run ` npm install ` this will install all the dependecies that t
     $ npm install
     
     $ npm link
+    
+    $ manager init
 ```
-
+ 
 # Commands
 The following are the  commands you will need to navigate through our system, in your terminal navigate to the system folder and run `manager <command>`
 
@@ -41,4 +43,4 @@ This app has been tested using  `jasmine-node`, to run the test in your command 
 ```
 
 #### Now we are good to go, Enjoy.
->>>>>>> a3c20d3ddc8c1914d115cf6472f57563238d62b1
+
