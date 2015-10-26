@@ -3,7 +3,7 @@ var User = require('../models/user'),
   bcrypt = require('bcrypt-nodejs');
 
 module.exports = {
-  createUser: function (req, cb) {
+  createUser: function(req, cb) {
     if (req === undefined) {
       cb('please provide  user data');
     }
@@ -18,7 +18,7 @@ module.exports = {
       },
       email: req.email,
       password: hash
-    }, function (err, users) {
+    }, function(err, users) {
       if (err)
         cb(err, null);
       cb(null, users);
@@ -26,8 +26,8 @@ module.exports = {
   },
 
   // Gets all users
-  getAllUsers: function (limit, cb) {
-    User.find({}, function (err, users) {
+  getAllUsers: function(limit, cb) {
+    User.find({}, function(err, users) {
       if (err) {
         cb(err);
       }
@@ -35,10 +35,10 @@ module.exports = {
     }).limit(limit);
   },
 
-  deleteUser: function (username, cb) {
+  deleteUser: function(username, cb) {
     User.remove({
       username: username
-    }, function (err, ok) {
+    }, function(err, ok) {
       if (err) {
         cd(err);
       }

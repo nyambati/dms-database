@@ -16,7 +16,7 @@ var Role = require('../models/roles'),
       }
     },
     //  Get all roles from the database
-    getAllRoles: function(limit,cb) {
+    getAllRoles: function(limit, cb) {
       Role.find({}, function(err, roles) {
         if (err) {
           cb(err, null);

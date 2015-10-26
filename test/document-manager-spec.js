@@ -1,4 +1,4 @@
-(function () {
+(function() {
   'use strict';
 
   var mongoose = require('mongoose'),
@@ -31,96 +31,96 @@
   };
 
   // TESTS
-  describe('Document managemnet  system test', function () {
+  describe('Document managemnet  system test', function() {
     // USER TEST SUITE
-    describe('Create new user', function () {
-      beforeEach(function (done) {
-        userHandler.createUser(fakeUser, function (err, user) {
+    describe('Create new user', function() {
+      beforeEach(function(done) {
+        userHandler.createUser(fakeUser, function(err, user) {
           error.push(err);
           done();
         });
       });
 
-      it('New user should be unique', function () {
+      it('New user should be unique', function() {
         expect(typeof error).toBe('object');
         expect(error[0].message).toBeDefined();
         expect(error[0].message.substring(0, 26)).toEqual('E11000 duplicate key error');
       });
     });
 
-    describe("Query user", function () {
+    describe("Query user", function() {
       // get the user data.
-      beforeEach(function (done) {
-        userHandler.getAllUsers(limit, function (allUsers) {
+      beforeEach(function(done) {
+        userHandler.getAllUsers(limit, function(allUsers) {
           users = allUsers;
           done();
         });
       });
 
       // checkif the user created is unique.
-      it('Should return unique username and password', function () {
+      it('Should return unique username and password', function() {
         expect(check.isUnique.email(users)).toBeTruthy();
         expect(check.isUnique.username(users)).toBeTruthy();
       });
 
-      it('Should return all data when getAll users is called', function () {
+      it('Should return all data when getAll users is called', function() {
         expect(users.length).toBeGreaterThan(0);
       });
 
-      it('Should have a role defined', function () {
+      it('Should have a role defined', function() {
         expect(check.isDefined).toBeTruthy();
       });
 
-      it('First name and last names Should be created', function () {
+      it('First name and last names Should be created', function() {
         expect(check.hasFirstName(users)).toBeTruthy();
         expect(check.hasLastName(users)).toBeTruthy();
       });
     });
 
-    describe('delete user', function (done) {
-      beforeEach(function (done) {
-        userHandler.deleteUser('thomasnyambati', function (err, ok) {
+    describe('delete user', function(done) {
+      beforeEach(function(done) {
+        userHandler.deleteUser('thomasnyambati', function(err, ok) {
           info = ok.result;
           done();
         });
       });
 
-      it('Should delete the document of specified id', function () {
+      it('Should delete the document of specified id', function() {
         expect(info.ok).toBe(1);
         expect(info.n).toBe(1);
       });
     });
 
     // ROLE TEST SUITE
-    describe('Roles', function () {
-      beforeEach(function (done) {
-        roleHandler.getAllRoles(limit, function (err, allRoles) {
+    describe('Roles', function() {
+      beforeEach(function(done) {
+        roleHandler.getAllRoles(limit, function(err, allRoles) {
           roles = allRoles;
           done();
         });
       });
 
-      it("Should have unique titles", function () {
+      it("Should have unique titles", function() {
         expect(check.isUnique.roleTitle(roles)).toBeTruthy();
       });
 
-      it('Should return all roles when getAllRoles is called', function () {
+      it('Should return all roles when getAllRoles is called', function() {
         expect(roles.length).toBeGreaterThan(0);
       });
     });
 
     // DOCUMENTS TEST SUITE
-    describe('Documents', function () {
-      describe('Create new document', function () {
-        beforeEach(function (done) {
-          docHandler.createDocument(fakeDoc, function (err, doc) {
+    describe('Documents', function() {
+      describe('Create new document', function() {
+        beforeEach(function(done) {
+          docHandler.createDocument(fakeDoc, function(err, doc) {
             newDoc = doc;
             docId = doc._id;
             done();
           });
         });
 
-        it('New documents should have all the required information', function () {
+        it('New documents should have all the required information', function() {
           expect(newDoc._id).toBeDefined();
           expect(newDoc.ownerId).toBeDefined();
           expect(newDoc.ownerId).toBe(fakeDoc.userId);
@@ -134,77 +134,77 @@
         });
       });
 
-      describe('Delete document', function () {
-        beforeEach(function (done) {
-          docHandler.deleteDocument(docId, function (err, ok) {
+      describe('Delete document', function() {
+        beforeEach(function(done) {
+          docHandler.deleteDocument(docId, function(err, ok) {
             info = ok.result;
             done();
           });
         });
 
-        it('Should delete the document of specified id', function () {
+        it('Should delete the document of specified id', function() {
           expect(info.ok).toBe(1);
           expect(info.n).toBe(1);
         });
       });
 
-      describe('Get all documents', function () {
-        beforeEach(function (done) {
-          docHandler.getAllDocuments(2, function (allDocs) {
+      describe('Get all documents', function() {
+        beforeEach(function(done) {
+          docHandler.getAllDocuments(2, function(allDocs) {
             docs = allDocs;
             done();
           });
         });
 
-        it('Each documents should have unique titles', function () {
+        it('Each documents should have unique titles', function() {
           expect(check.isUnique.docTitle(docs)).toBeTruthy();
         });
 
-        it('Each document should have a owner', function () {
+        it('Each document should have a owner', function() {
           expect(check.hasOwner(docs)).toBeTruthy();
         });
 
-        it('Each document has dateCreated', function () {
+        it('Each document has dateCreated', function() {
           expect(check.hasDateCreated(docs)).toBeTruthy();
         });
 
-        it('Should return documents of specified limit', function () {
+        it('Should return documents of specified limit', function() {
           expect(docs.length).toBe(2);
         });
 
-        it('Should return all docs when getAlldocuments is called', function () {
+        it('Should return all docs when getAlldocuments is called', function() {
           expect(docs.length).toBeGreaterThan(0);
         });
 
-        it('Should return documents starting with the recent one', function () {
+        it('Should return documents starting with the recent one', function() {
           expect(check.ordered(docs)).toBeTruthy();
         });
       });
     });
     // SEARCH TEST SUITE
-    describe('Search', function () {
-      describe('Get documents by  date', function () {
-        beforeEach(function (done) {
-          docHandler.getAllDocumentsByDate('2015-10-06', 2, function (allDocs) {
+    describe('Search', function() {
+      describe('Get documents by  date', function() {
+        beforeEach(function(done) {
+          docHandler.getAllDocumentsByDate('2015-10-06', 2, function(allDocs) {
             docs = allDocs;
             done();
           });
         });
 
-        it("Should return all document of a specified date", function () {
+        it("Should return all document of a specified date", function() {
           expect(check.isByDate(docs)).toBeTruthy();
         });
       });
 
-      describe('Get documents by role', function () {
-        beforeEach(function (done) {
-          docHandler.getAllDocumentsByRole('public', 2, function (allDocs) {
+      describe('Get documents by role', function() {
+        beforeEach(function(done) {
+          docHandler.getAllDocumentsByRole('public', 2, function(allDocs) {
             docs = allDocs;
             done();
           });
         });
 
-        it("Should return all document of a specified date", function () {
+        it("Should return all document of a specified date", function() {
           expect(check.isOfSameRole(docs)).toBeTruthy();
         });
       });
