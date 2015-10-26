@@ -6,9 +6,9 @@
    Role = require('../models/roles');
 
  module.exports = {
-   user: function() {
+   user: function () {
      // Insert users into the db
-     User.collection.insert(users, function(err, users) {
+     User.collection.insert(users, function (err, users) {
        if (err) {
          console.log('======================================');
          console.log(err.message.substring(7, 26).toUpperCase() + ': Users Already created');
@@ -19,9 +19,9 @@
      });
    },
 
-   roles: function() {
+   roles: function () {
      // Insert role into the db
-     Role.collection.insert(roles, function(err, roles) {
+     Role.collection.insert(roles, function (err, roles) {
        if (err) {
          console.log('======================================');
          console.log(err.message.substring(7, 26).toUpperCase() + ': Roles Already created');
@@ -32,9 +32,11 @@
      });
    },
 
-   documents: function() {
+   documents: function () {
      // Insert documents into the db
-     documents.forEach(function(doc) {
+     var counter = 0,
+       errCounter = 0;
+     documents.forEach(function (doc) {
        Doc.create({
            ownerId: doc.ownerId,
            title: doc.title,
@@ -42,13 +44,19 @@
            access: doc.access,
            dateCreated: doc.dateCreated
          },
-         function(err, documents) {
+         function (err, documents) {
            if (err) {
-             console.log('======================================');
-             console.log(err.message.substring(7, 26).toUpperCase() + ': Documents Already created');
+             errCounter++;
+             if (errCounter === 4) {
+               console.log('======================================');
+               console.log(err.message.substring(7, 26).toUpperCase() + ': Documents Already created');
+             }
            } else {
-             console.log('======================================');
-             console.log('Documents have been inserted');
+             counter++;
+             if (counter === 4) {
+               console.log('======================================');
+               console.log('Documents have been inserted');
+             }
            }
          });
      });
