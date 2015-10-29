@@ -103,7 +103,7 @@
     isDefined: function(users) {
       var unique = false;
       for (var key in users) {
-        if (users[key].role !== undefined) {
+        if (users[key].role) {
           unique = true;
         } else {
           unique = false;
@@ -115,7 +115,7 @@
     hasFirstName: function(users) {
       var unique;
       for (var key in users) {
-        if (users[key].name.first !== undefined) {
+        if (users[key].name.first) {
           unique = true;
         } else {
           unique = false;
@@ -127,7 +127,7 @@
     hasLastName: function(users) {
       var unique;
       for (var key in users) {
-        if (users[key].name.last !== undefined) {
+        if (users[key].name.last) {
           unique = true;
         } else {
           unique = false;
@@ -139,7 +139,7 @@
     hasOwner: function(docs) {
       var unique = false;
       for (var key in docs) {
-        if (docs[key].ownerId !== undefined) {
+        if (docs[key].ownerId) {
           unique = true;
         } else {
           unique = false;
@@ -152,7 +152,7 @@
     hasDateCreated: function(docs) {
       var unique = false;
       for (var key in docs) {
-        if (docs[key].dateCreated !== undefined) {
+        if (docs[key].dateCreated) {
           unique = true;
         } else {
           unique = false;

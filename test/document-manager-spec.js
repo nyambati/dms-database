@@ -68,7 +68,7 @@
       });
 
       it('Should have a role defined', function() {
-        expect(check.isDefined).toBeTruthy();
+        expect(check.isDefined(users)).toBeTruthy();
       });
 
       it('First name and last names Should be created', function() {
