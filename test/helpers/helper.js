@@ -42,7 +42,6 @@
         }
         // if the username array is more than one
         var unique = false;
-
         for (var i = 0; i < username.length - 1; i++) {
           if (username[i] !== username[i + 1]) {
             unique = true;
@@ -64,7 +63,6 @@
           return true;
         } else {
           var unique = false;
-
           for (var i = 0; i < titles.length - 1; i++) {
             if (titles[i] !== titles[i + 1]) {
               unique = true;
@@ -103,54 +101,64 @@
 
     // chekc if the user role are defined
     isDefined: function(users) {
+      var unique = false;
       for (var key in users) {
         if (users[key].role !== undefined) {
-          return true;
+          unique = true;
         } else {
-          return false;
+          unique = false;
         }
       }
+      return unique;
     },
 
     hasFirstName: function(users) {
+      var unique;
       for (var key in users) {
         if (users[key].name.first !== undefined) {
-          return true;
+          unique = true;
         } else {
-          return false;
+          unique = false;
         }
       }
+      return unique;
     },
 
     hasLastName: function(users) {
+      var unique;
       for (var key in users) {
         if (users[key].name.last !== undefined) {
-          return true;
+          unique = true;
         } else {
-          return false;
+          unique = false;
         }
       }
+      return unique;
     },
 
     hasOwner: function(docs) {
+      var unique = false;
       for (var key in docs) {
         if (docs[key].ownerId !== undefined) {
-          return true;
+          unique = true;
         } else {
-          return false;
+          unique = false;
         }
       }
+      return unique;
     },
 
     // Check if the documents have date created
     hasDateCreated: function(docs) {
+      var unique = false;
       for (var key in docs) {
         if (docs[key].dateCreated !== undefined) {
-          return true;
+          unique = true;
         } else {
-          return false;
+          unique = false;
         }
       }
+      return unique;
     },
 
     // checks if the the  documents retrived are ordered.

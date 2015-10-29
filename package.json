@@ -15,7 +15,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "jasmine-node test --verbose"
+    "test": "manager init && jasmine-node test --verbose"
   },
   "preferGlobal": true,
   "bin": {
